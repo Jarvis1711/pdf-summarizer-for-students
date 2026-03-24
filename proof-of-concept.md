@@ -1,24 +1,25 @@
 # Proof of Concept - PDF Summarizer for Students
 
-## Idea Reference
-- Number: 57
-- Title: PDF Summarizer for Students
-- Description: Extracts key concepts from long academic papers using AI.
+## Scope
+- App category: FinTech
+- Entity model: Pdf Summarizer Ledger Entry
+- Deployable stack: Flask + SQLAlchemy + Gunicorn + Docker + CI
 
-## PoC Scope
-- App boots with Flask + SQLite persistence
-- CRUD flow works via web UI (`/`, `/items/new`, `/items/<id>/edit`)
-- API endpoints return valid JSON (`/api/health`, `/api/items`)
-- Deployability assets included (`Dockerfile`, `docker-compose.yml`, `Procfile`)
+## Dynamic Field Configuration
+- Account/Wallet: `account_or_wallet` (text)
+- Amount: `amount` (number)
+- Risk/Compliance Notes: `risk_notes` (textarea)
 
-## Run Evidence (to capture)
+## Run Evidence Commands
 ```bash
 python app.py
 curl http://localhost:5000/api/health
-curl -X POST http://localhost:5000/api/items -H "Content-Type: application/json" -d '{"title": "Demo item", "details": "Created from PoC command", "status": "active"}'
-curl http://localhost:5000/api/items
+curl http://localhost:5000/api/schema
+curl -X POST http://localhost:5000/api/records   -H "Content-Type: application/json"   -d '{"title":"Demo Record","status":"reconciled","payload":{"account_or_wallet":"Demo value","amount":12,"risk_notes":"seed note"}}'
+curl http://localhost:5000/api/metrics
 ```
 
 ## Metadata
-- Generated UTC: 2026-03-24T15:35:11.663006+00:00
-- Status: Deployable full-template scaffold complete
+- Idea number: 61
+- Generated UTC: 2026-03-24T15:52:22.203803+00:00
+- Status: Phase-2 complete
